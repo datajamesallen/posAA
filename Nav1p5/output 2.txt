@@ -1,0 +1,8 @@
+number of variants: 252
+number of possible variants: 70
+number of impossible variants: 182
+Ks_2sampResult(statistic=0.29560439560439566, pvalue=0.000207159303959954)
+Ttest_indResult(statistic=-2.426134553719734, pvalue=0.015980438771073236)
+With random sampling of N=50 each
+Ks_2sampResult(statistic=0.32, pvalue=0.008899159056551566)
+Ttest_indResult(statistic=-2.1978151639247647, pvalue=0.030341615752551118)
