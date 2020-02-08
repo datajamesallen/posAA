@@ -12,12 +12,14 @@ import matplotlib.pyplot as plt
 from scipy.stats import ks_2samp
 #from scipy.stats import ttest_ind
 
-output_list = [['target','urn','mean_score_all','std_score_all','n_all','mean_score_pos',
+output_list = [['target','urn','n_pre','mean_score_all','std_score_all','n_all','mean_score_pos',
                 'std_score_pos','n_pos','mean_score_impos','std_score_impos',
                 'n_impos','delta_pos_impos','ks_stat','ks_p']]
 
 # iterate through targets and files
 for target in os.listdir('scoresets'):
+    if not os.path.isdir(os.path.join('scoresets',target)):
+        continue
     for filename in os.listdir('scoresets/' + target):
         if filename.endswith('_data.csv'):
             # the urn number that identifies the data set
@@ -32,6 +34,9 @@ for target in os.listdir('scoresets'):
 
             # open data file
             df = pd.read_csv(os.path.join('scoresets',target,filename), skiprows = 4)
+            n_pre = len(df)
+            df['single_aa'] = df.apply(lambda x: len(x['hgvs_pro'].split(';')) == 1, axis=1)
+            df = df[df['single_aa'] == True]
 
             # calculate possible variants
             df['possible'] = df['hgvs_pro'].isin(pos_codons_list)
@@ -43,6 +48,9 @@ for target in os.listdir('scoresets'):
             imposdf = df[df['possible'] == False]
             n_impos = len(imposdf)
             #print('number of impossible variants: ' + str(len(imposdf)))
+
+            posdf.to_csv(os.path.join('scoresets',target,urn + '_possible'))
+            imposdf.to_csv(os.path.join('scoresets',target,urn + '_impossible'))
 
             mean_score_all = df['score'].mean()
             mean_score_pos = posdf['score'].mean()
@@ -58,6 +66,7 @@ for target in os.listdir('scoresets'):
             imposlist = imposdf['score'].tolist()
 
             ks_stat, ks_p = ks_2samp(poslist,imposlist)
+            #ks_stat_exact, ks_p_exact = ks_2samp(poslist,imposlist,mode='exact')
             #print(ttest_ind(a,b,nan_policy='omit'))
 
             fig,(ax1,ax2,ax3) = plt.subplots(3,1, sharex=True)
@@ -70,7 +79,7 @@ for target in os.listdir('scoresets'):
             plt.savefig(os.path.join('scoresets',target,urn + '_histograms.png'))
             plt.close(fig)
 
-            output_row = [target, urn, mean_score_all, std_score_all, n_all, mean_score_pos,
+            output_row = [target, urn, n_pre, mean_score_all, std_score_all, n_all, mean_score_pos,
                           std_score_pos, n_pos, mean_score_impos, std_score_impos,
                           n_impos, delta_pos_impos, ks_stat, ks_p]
 

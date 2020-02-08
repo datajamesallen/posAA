@@ -1,0 +1,17 @@
+Novel Drivers of MPL-dependent Oncogenic Transformation
+keywords:
+Description
+The screen was designed to identify all single-amino-acid substitutions in the human TpoR transmembrane (TM) and partial juxtamembrane (JM) regions (488-516) that confer factor-free growth.
+Abstract
+
+Method
+The DMS library was encoded in the retroviral expression system pMX-GW-PGK-PuroR-GFP. Each codon for amino acid positions 488-516 of the human TpoR protein, encompassing the TM and partial JM regions, was independently randomised using degenerate (NNN) primers (IDT) to encode all 64 possible codons. Plasmid preparations for all positions (488-516) were pooled together in equal amounts to obtain a library containing all 1,856 possible DNA variants. The frequencies of variants in each library were determined by Illumina sequencing, which confirmed 100% representation across the randomised region and constitutes the unselected control sample.
+
+The library was transfected into HEK293T cells along with retroviral packaging vectors using calcium phosphate transfection. After 48 hrs, supernatants containing virus were harvested and sterile filtered for transduction into Ba/F3 cells.  The pooled retroviral library was used to transduce 10^6 Ba/F3 cells at a multiplicity of infection ~0.1, generating ~10^5 transductants for each of six biological replicates. These six cultures were treated with 5 μg/ml puromycin (on IL-3) for 48 hours to yield pure virus-positive cells. Cells for each replicate were split in half and cultured in the continued presence of IL-3, or were washed to remove IL-3, and subjected to another 48 hours culture. mRNA was prepared from the live cells that remained at the end of this procedure.
+
+cDNA was prepared from 1 μg of total RNA using the TpoR-specific reverse transcription primer containing a 16 bp unique molecular identifier (UMI) and an Illumina adapter. cDNA was amplified to add illumina adapters and indexes for sequencing using an Illumina NextSeq kit with 140 cycles in the forward direction and 160 cycles in the reverse direction.
+
+The paired-end reads from Illumina sequencing runs were separated into samples based on Illumina index sequences using Cutadapt v1.15. De-duplication based on the UMI was performed using UMI Tools v1.15 after sample separation. Reads were trimmed to the region of interest and filtered for length using Cutadapt7 prior to analysis with Enrich2 v1.2.0. 
+
+To determine mutations that confer constitutive activity log ratio enrichment scores were calculated for each of the six replicates by comparing the variant counts in the unselected plasmid library with those remaining in Ba/F3 cells after 2 days of culture in growth factor free media using “wild-type” (all synonymous DNA sequences encoding the WT amino acid sequence) count normalisation.
+Pubmed
