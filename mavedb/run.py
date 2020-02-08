@@ -8,11 +8,12 @@ to those that are not possible, for differences in functional parameters
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+import re
 
 from scipy.stats import ks_2samp
 #from scipy.stats import ttest_ind
 
-output_list = [['target','urn','n_pre','mean_score_all','std_score_all','n_all','mean_score_pos',
+output_list = [['target','urn','n_multi','n_syn','mean_score_all','std_score_all','n_all','mean_score_pos',
                 'std_score_pos','n_pos','mean_score_impos','std_score_impos',
                 'n_impos','delta_pos_impos','ks_stat','ks_p']]
 
@@ -34,9 +35,12 @@ for target in os.listdir('scoresets'):
 
             # open data file
             df = pd.read_csv(os.path.join('scoresets',target,filename), skiprows = 4)
-            n_pre = len(df)
             df['single_aa'] = df.apply(lambda x: len(x['hgvs_pro'].split(';')) == 1, axis=1)
+            df['syn'] = df.apply(lambda x: len(re.findall('=', x['hgvs_pro']))==1, axis = 1)
+            n_multi = len(df[df['single_aa'] == False])
+            n_syn = len(df[df['syn'] == True])
             df = df[df['single_aa'] == True]
+            df = df[df['syn'] == False]
 
             # calculate possible variants
             df['possible'] = df['hgvs_pro'].isin(pos_codons_list)
@@ -79,7 +83,7 @@ for target in os.listdir('scoresets'):
             plt.savefig(os.path.join('scoresets',target,urn + '_histograms.png'))
             plt.close(fig)
 
-            output_row = [target, urn, n_pre, mean_score_all, std_score_all, n_all, mean_score_pos,
+            output_row = [target, urn, n_multi, n_syn, mean_score_all, std_score_all, n_all, mean_score_pos,
                           std_score_pos, n_pos, mean_score_impos, std_score_impos,
                           n_impos, delta_pos_impos, ks_stat, ks_p]
 
