@@ -10,14 +10,20 @@ to those that are not possible, for differences in functional parameters
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 import re
+
+# testing ks test from r package
+from rpy2.robjects.vectors import FloatVector
+from rpy2.robjects.packages import importr
+r_stats = importr('stats')
 
 from scipy.stats import ks_2samp
 #from scipy.stats import ttest_ind
 
 output_list = [['target','urn','n_multi','n_syn','mean_score_all','std_score_all','n_all','mean_score_pos',
                 'std_score_pos','n_pos','mean_score_impos','std_score_impos',
-                'n_impos','delta_pos_impos','ks_stat','ks_p','ks_stat_exact','ks_p_exact']]
+                'n_impos','delta_pos_impos','ks_stat','ks_p','r_ks_stat','r_ks_p']]
 
 # iterate through targets and files
 for target in os.listdir('scoresets'):
@@ -76,10 +82,41 @@ for target in os.listdir('scoresets'):
                 poslist = posdf['score'].tolist()
                 imposlist = imposdf['score'].tolist()
 
-                ks_stat, ks_p = ks_2samp(poslist,imposlist)
-                ks_stat_exact, ks_p_exact = ks_2samp(poslist,imposlist,mode='exact')
+                ks_stat, ks_p = ks_2samp(poslist,imposlist,mode='exact')
+
+                r_poslist = FloatVector(poslist)
+                r_imposlist = FloatVector(imposlist)
+
+                r_result = r_stats.ks_test(r_poslist, r_imposlist, exact=True)
+                #print(r_result)
+                r_ks_stat = r_result.rx('statistic')[0][0]
+                r_ks_p = r_result.rx('p.value')[0][0]
+
+                #ks_stat_exact, ks_p_exact = ks_2samp(poslist,imposlist,mode='exact')
                 #print(ttest_ind(a,b,nan_policy='omit'))
 
+                # new histogram design
+                fig,ax = plt.subplots(1,1)
+                bins = 40
+                a = posdf['score']
+                b = imposdf['score']
+                a_w = np.empty(a.shape)
+                a_w.fill(1/a.shape[0])
+                b_w = np.empty(b.shape)
+                b_w.fill(1/b.shape[0])
+                ax.hist([a,b], bins, color = ['blue','red'], weights = [a_w,b_w], label = ['possible','impossible'])
+                #ax.hist(posdf['score'], bins, color ='blue', alpha=0.5, label='possible', density=True)
+                #ax.hist(imposdf['score'], bins, color ='yellow', alpha=0.5, label='impossible', density=True)
+                plt.xlabel('Score')
+                plt.ylabel('Probability')
+                plt.suptitle('Normalized Histogram of ' + target + ' (' + urn + ')')
+                plt.title('K-S p value = ' + str(r_ks_p))
+                plt.legend()
+                plt.savefig(os.path.join(urn_dir, urn+'_histograms.png'))
+                plt.savefig('figures/histograms/' + target + '_' + urn + '.png')
+                plt.close(fig)
+                """
+                # old histogram code
                 fig,(ax1,ax2,ax3) = plt.subplots(3,1, sharex=True)
                 ax1.hist(df['score'], bins = 40)
                 ax1.set_title('all data')
@@ -89,10 +126,11 @@ for target in os.listdir('scoresets'):
                 ax3.set_title('impossible variants only')
                 plt.savefig(os.path.join(urn_dir,urn + '_histograms.png'))
                 plt.close(fig)
+                """
 
                 output_row = [target, urn, n_multi, n_syn, mean_score_all, std_score_all, n_all, mean_score_pos,
                           std_score_pos, n_pos, mean_score_impos, std_score_impos,
-                          n_impos, delta_pos_impos, ks_stat, ks_p, ks_stat_exact, ks_p_exact]
+                          n_impos, delta_pos_impos, ks_stat, ks_p, r_ks_stat, r_ks_p]
 
                 output_list.append(output_row)
 

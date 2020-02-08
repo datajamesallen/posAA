@@ -33,8 +33,5 @@ ax.set_xlabel('Assay Type')
 ax.set_ylabel('-log10(ks p-value)')
 plt.savefig('figures/assaytype_ksp.png')
 
-fig4, ax = plt.subplots(1,1)
-ax.plot(
-
 #group_df = df.groupby('manual_annotation_assay').mean()
 #print(group_df['n_all'])
