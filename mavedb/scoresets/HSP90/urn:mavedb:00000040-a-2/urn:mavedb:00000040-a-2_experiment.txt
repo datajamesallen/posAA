@@ -1,0 +1,14 @@
+Deep mutational scan of HSP90, 30C with salt
+keywords:
+regression
+NNN mutagenesis
+EMPIRIC
+growth assay
+Description
+Deep mutational scan of all single mutants in a nine-amino acid region of Hsp90 (Hsp82) in Saccharomyces cerevisiae at 30C with 0.5 M NaCl.
+Abstract
+This study measured the effect of variants in yeast HSP90 under different combinations of temperature (30C or 36C) and presence/absence of salt (0.5 M NaCl). The results explore the adaptive potential of this essential gene.
+Method
+Sequencing reads were filtered based on a minimum Phred quality score of 20 across all 36 bases. For each time point, the log2 ratio of each variant's count to the wild type count was calculated. The score of each variant was calculated as the slope of these log ratios to time in wild type generations. Scores of -0.5 are considered null-like.
+Pubmed
+http://www.ncbi.nlm.nih.gov/pubmed/24299404

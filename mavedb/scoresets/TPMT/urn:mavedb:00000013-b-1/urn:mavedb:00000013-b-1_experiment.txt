@@ -1,0 +1,16 @@
+TMPT VAMP-seq
+keywords:
+barcode sequencing
+FACS
+VAMP-seq
+Enrich2
+Description
+Amino acid scores for variant abundance by massively parallel sequencing (VAMP-seq) applied to TPMT.
+Abstract
+This study demonstrated variant abundance by massively parallel sequencing (VAMP-seq), a technique for measuring the effect of protein variants on abundance using fluorescence. VAMP-seq is a generally-applicable assay for protein stability that can identify loss-of-function variants.
+Method
+Barcodes for each bin were counted and associated with variant sequences using Enrich2. Scores were calculated based on the frequency of each variant in each bin using a weighted average such that increased abundance in high-signal bins gives a higher score. Abundance scores were calculated based on a min-max normalization using wild type (score of 1) and the average nonsense variant score (score of 0). The scores reported are the average of the eight replicate scores. Confidence intervals and variance estimates are based on the replicate scores.
+
+Metadata contains the mapping between abundance classes and the integer values found in the database.
+Pubmed
+http://www.ncbi.nlm.nih.gov/pubmed/29785012

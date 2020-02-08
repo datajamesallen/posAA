@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 """
 add in extra information to the output.csv file from the mavedb API
 
@@ -60,13 +62,17 @@ if res:
         target_row = [urn, keywords, title, short_desc, pubmed_ids]
         target_list.append(target_row)
 
+print('merging data with output.csv')
+
 # merge the scoreset info with the output.csv
+# also added annotations
 
 import pandas as pd 
 
 info_df = pd.DataFrame(target_list[1:], columns = target_list[0])
 output_df = pd.read_csv('output.csv')
+anno_df = pd.read_csv('annotations.csv')
 
 final_output = pd.merge(output_df, info_df, how='outer',on='urn')
+final_output = pd.merge(final_output, anno_df, how = 'outer', on ='urn')
 final_output.to_csv('output.csv',index=False)
-

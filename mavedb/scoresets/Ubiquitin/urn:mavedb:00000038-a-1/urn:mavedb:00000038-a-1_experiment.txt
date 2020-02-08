@@ -1,0 +1,19 @@
+Ubiquitin-E1 yeast display amino acid scores, limiting E1
+keywords:
+Binding
+ubiquitin
+E1
+yeast display
+EMPIRIC
+FACS
+Description
+Amino acid scores for deep mutational scan of ubiquitin in a yeast display binding assay to E1 with limiting E1.
+Abstract
+This study measured the effect of single amino acid changes in ubiquitin on binding to E1 (Uba1). Combined with work from a previous study on the effect of ubiquitin mutations on yeast growth rate, this showed that ubiquitin-E1 binding was not linearly related to growth rate and that mutations in ubiquitin are likely to affect multiple function that modulate growth rate.
+
+This experiment was performed in limiting E1 conditions (as opposed to excess E1).
+Method
+Scores were calculated using the EMPIRIC log ratios approach, using the ratio of E1-reactive cells to HA-displaying cells. Scores were normalized such that the average wild type synonymous variant was 1 and the average nonsense mutation was 0. The raw $log_2$ ratio is included as an extra column. The "Std" column lists the standard deviation calculated from multiple measurements of synonymous codons. This value is `nan` when only one codon was measured.
+Pubmed
+http://www.ncbi.nlm.nih.gov/pubmed/24862281
+http://www.ncbi.nlm.nih.gov/pubmed/23376099

@@ -1,0 +1,16 @@
+Ubiquitin EMPIRIC amino acid scores
+keywords:
+ubiquitin
+EMPIRIC
+growth assay
+Description
+EMPIRIC amino acid scores for deep mutational scan of ubiquitin and its effect on yeast growth.
+Abstract
+This study performed a bulk growth competition experiment measuring the effect of point mutations on ubiquitin structure and function. The results were consistent with previous studies of individual mutants as well as Alanine-scanning. Positions were clustered by their tolerance of mutations and highly sensitive regions were mapped.
+Method
+Scores were calculated using EMPIRIC [Hietpas et al.]. Scores for each amino acid substitution are provided. The "Std" column lists the standard deviation calculated from multiple measurements of synonymous codons. This value is `nan` when only one codon was measured.
+
+Variants that were severe loss of function or low plasmid count (and therefore not scored) were excluded from this dataset.
+Pubmed
+http://www.ncbi.nlm.nih.gov/pubmed/21464309
+http://www.ncbi.nlm.nih.gov/pubmed/23376099

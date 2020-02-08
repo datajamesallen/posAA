@@ -1,0 +1,14 @@
+Deep mutational scan of Gal4 DNA-binding domain, SEL_C_64h
+keywords:
+barcode sequencing
+log ratios
+DNA-binding
+Yeast two-hybrid
+Description
+Deep mutational scan of Gal4 DNA-binding domain using a yeast growth assay. 64 hours of selection.
+Abstract
+This experiment demonstrated the programmed allelic series (PALS) method for site-directed mutagenesis using microarrays. The impact of nearly all singleton missense mutation in the Gal4 yeast transcription factor was measured in multiple selections.
+Method
+Variant counts were calculated by summing the read counts of barcodes associated with each variant. The enrichment score for each variant is the $\log_2$ ratio of the mutant count over the wild type count for the selected time point minus the $\log_2$ ratio of the mutant count over the wild type count for the input time point (ratio of ratios).
+Pubmed
+http://www.ncbi.nlm.nih.gov/pubmed/25559584

@@ -1,0 +1,19 @@
+Amino acid scores for Src CD
+keywords:
+kinase
+NNK mutagenesis
+Enrich2
+growth assay
+regression
+barcode sequencing
+subassembly
+Description
+Amino acid scores for deep mutational scan of the Src kinase catalytic domain.
+Abstract
+This study infers the activity of variants in Src kinases's catalytic domain by measuring their effects on yeast growth, and therefore phosphotransferase activity. The resulting dataset includes variants classified as gain of function, loss of function. or neutral.
+Method
+Variant scores were calculated using Enrich2 weighted least squares regression and wild-type normalization. The `activity_score` is `-1 * score`, because negative scores indicate depletion in the population, which is associated with higher kinase activity.
+
+Variants were classified as "gain of function" "neutral" or "loss of function" based on whether they were within +/- 2 standard deviations of the mean score of synonymous variants (variants with wild type amino acid sequence). These categories are denoted by 1, 0, or -1 in the table respectively.
+Pubmed
+http://www.ncbi.nlm.nih.gov/pubmed/30956043

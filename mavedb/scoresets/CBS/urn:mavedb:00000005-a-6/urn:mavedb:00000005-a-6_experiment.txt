@@ -1,0 +1,18 @@
+CBS high-B6
+keywords:
+homocystinuria
+Vitamin B6
+DMS-TileSeq
+complementation
+Description
+A Deep Mutational Scan of the human cystathionine-beta-synthase (CBS) using functional complementation in yeast via DMS-TileSeq at high levels of Vitamin B6.
+Abstract
+Success in precision medicine depends on our ability to determine which rare human genetic variants have functional effects. Classical homocystinuria - characterized by elevated homocyst(e)ine in plasma and urine - is caused by primarily-rare variants in the cystathionine beta-synthase (CBS) gene. About half of patients respond to vitamin B6 therapy. With early detection in newborns, existing therapies are highly effective. Functional CBS variants, especially those that respond to vitamin B6, can be detected based on their ability to restore growth in yeast cells lacking CYS4 (the yeast ortholog of CBS). This assay has previously been carried out only reactively after first observation of a variant in patients. Here we describe a proactive comprehensive missense variant effect map for human CBS. Together, saturation codon-replacement mutagenesis, en masse growth selection at different vitamin B6 levels, and sequencing yielded a look-up table for CBS missense variant function and vitamin B6-remediability in yeast. The CBS variant effect map identified disease variants and predicted both disease severity (r = 0.82) and human clinical response to vitamin B6 (r = 0.89). Thus, highly-multiplexed cell-based assays can yield proactive maps of variant function and patient response to therapy, even for rare variants not previously seen in the clinic.
+
+See Sun et al 2018
+Method
+Scoring procedure:
+DMS-TileSeq reads were processed using the tileseq_package and tileseqMave softwares. Briefly, TileSeq read counts were used to establish relative allele frequencies in each condition. Non-mutagenized control counts were subtracted from counts (as estimates of sequencing error). Log-ratios of selection over non-selection counts were calculated. The resulting TileSeq fitness values were then normalized to 0-1 scale where 0 corresponds to the median nonsense score and 1 corresponds to the median synonymous score. 
+
+See Sun et al 2018 for more details.
+Pubmed

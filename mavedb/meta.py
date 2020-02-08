@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+
+"""
+run meta analysis on the data
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import math
@@ -8,7 +14,6 @@ df['mlogp'] = [-1*math.log(x,10) for x in ks_p]
 
 fig1, ax = plt.subplots(1,1)
 ax.scatter(df['n_all'],df['mlogp'])
-ax.set_xlim(0,20000)
 ax.set_xlabel('total positions')
 ax.set_ylabel('-log10(ks pvalue)')
 plt.savefig('figures/total_vs_ksp.png')
@@ -27,6 +32,9 @@ plt.xticks(rotation=90)
 ax.set_xlabel('Assay Type')
 ax.set_ylabel('-log10(ks p-value)')
 plt.savefig('figures/assaytype_ksp.png')
+
+fig4, ax = plt.subplots(1,1)
+ax.plot(
 
 #group_df = df.groupby('manual_annotation_assay').mean()
 #print(group_df['n_all'])

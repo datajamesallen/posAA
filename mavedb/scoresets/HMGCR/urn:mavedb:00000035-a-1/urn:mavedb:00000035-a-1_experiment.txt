@@ -1,0 +1,9 @@
+HMGCR rosuvastatin imputed and refined
+keywords:
+Description
+A deep mutational scan of HMG-CoA reductase (HMGCR) based on a functional complementation assay in yeast via DMS-TIleSeq in rosuvastatin media.
+Abstract
+
+Method
+
+Pubmed

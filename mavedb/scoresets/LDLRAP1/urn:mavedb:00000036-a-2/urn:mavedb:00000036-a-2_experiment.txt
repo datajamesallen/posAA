@@ -1,0 +1,9 @@
+LDLRAP1 AP2B1 imputed and refined
+keywords:
+Description
+A deep mutational scan of LDLRAP1 based on a Y2H assay with the interactor AP2B1.
+Abstract
+
+Method
+
+Pubmed

@@ -1,0 +1,19 @@
+UBE2I DMS-BarSeq
+keywords:
+DMS-BarSeq
+E2
+sumoylation
+complementation
+Description
+A Deep Mutational Scan of the human SUMO E2 conjugase UBE2I using functional complementation in yeast via DMS-BarSeq
+Abstract
+Although we now routinely sequence human genomes, we can confidently identify only a fraction of the sequence variants that have a functional impact. Here, we developed a deep mutational scanning framework that produces exhaustive maps for human missense variants by combining random codon mutagenesis and multiplexed functional variation assays with computational imputation and refinement. We applied this framework to four proteins corresponding to six human genes: UBE2I (encoding SUMO E2 conjugase), SUMO1 (small ubiquitin-like modifier), TPK1 (thiamin pyrophosphokinase), and CALM1/2/3 (three genes encoding the protein calmodulin). The resulting maps recapitulate known protein features and confidently identify pathogenic variation. Assays potentially amenable to deep mutational scanning are already available for 57% of human disease genes, suggesting that DMS could ultimately map functional variation for all human disease genes. 
+
+See [**Weile *et al.* 2017**](http://msb.embopress.org/content/13/12/957)
+Method
+##Scoring procedure:
+DMS-BarSeq and reads were processed using the [dmsPipeline](https://bitbucket.org/rothlabto/dmspipeline) software. Briefly, Barseq read counts were used to establish relative frequencies of each strain at each timepoint and converted to estimates of absolute frequencies using OD measurement data. Absolute counts were used to establish growth curves from which fitness parameters were estimated and then normalized to 0-1 scale where 0 corresponds to null controls and 1 corresponds to WT controls. 
+
+See [**Weile *et al.* 2017**](http://msb.embopress.org/content/13/12/957) for more details.
+Pubmed
+http://www.ncbi.nlm.nih.gov/pubmed/29269382

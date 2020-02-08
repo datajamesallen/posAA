@@ -1,0 +1,21 @@
+Enrich2 amino acid variant scores for BRCA1 Y2H
+keywords:
+regression
+Yeast two-hybrid
+ubiquitin
+Description
+Amino acid variant scores for deep mutational scan of the BRCA1 RING domain using yeast two-hybrid calculated by Enrich2.
+Abstract
+These experiments measured the functional consequences of mutations in the BRCA1 RING domain, where most clinically-relevant single nucleotide variants reside. One goal of the study was to create a "look-up table" of single nucleotide variants for clinical use, by prospectively measuring the impact of all possible variants that are likely to appear in patients. The study combines two different assays - one based on E3 ubiquitin ligase activity and one based on BRCA1-BARD1 heterodimer formation - and makes one of the first attempts to combine data from different MAVEs on the same target.
+
+This entry contains scores from the yeast two-hybrid assay, which tested the BRCA1-BARD1 heterodimer formation in BRCA1 variants.
+
+Note that this score set does not describe the scores presented in the original publication. It is a reanalysis of the raw data that was produced as part of testing and development for Enrich2.
+Method
+Scores were calculated using the Enrich2 weighted least squares regression scoring model. Replicate scores were combined using the Enrich2 random-effects model. Counts for each variant were calculated as the sum of counts for all barcodes associated with a variant with the same amino acid sequence.
+
+The scores and standard errors calculated for each of replicate appear as additional columns.
+
+Count columns are named using the format `<replicate>_c_<timepoint>`. The 0 time point is the input (unselected). Time points are given in hours.
+Pubmed
+http://www.ncbi.nlm.nih.gov/pubmed/28784151

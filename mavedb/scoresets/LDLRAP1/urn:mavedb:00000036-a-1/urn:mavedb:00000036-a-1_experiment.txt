@@ -1,0 +1,9 @@
+LDLRAP1 OBFC1 imputed and refined
+keywords:
+Description
+A deep mutational scan of LDLRAP1 based on a Y2H assay with the interactor OBFC1.
+Abstract
+
+Method
+
+Pubmed

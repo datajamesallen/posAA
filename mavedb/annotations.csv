@@ -1,61 +1,61 @@
-﻿target,urn,manual_annotation_assay
-HMGCR,urn:mavedb:00000035-a-2,complementation
-HMGCR,urn:mavedb:00000035-a-3,complementation
-HMGCR,urn:mavedb:00000035-a-1,complementation
-hYAP65 WW domain,urn:mavedb:00000002-a-2,phage display
-hYAP65 WW domain,urn:mavedb:00000002-a-1,phage display
-PTEN,urn:mavedb:00000013-a-1,unknown
-CBS,urn:mavedb:00000005-a-5,complementation
-CBS,urn:mavedb:00000005-a-4,complementation
-CBS,urn:mavedb:00000005-a-2,complementation
-CBS,urn:mavedb:00000005-a-3,complementation
-CBS,urn:mavedb:00000005-a-6,complementation
-CBS,urn:mavedb:00000005-a-1,complementation
-PAB1,urn:mavedb:00000010-a-1,RNA-binding
-S505N MPL,urn:mavedb:00000043-a-2,unknown
-UBE2I,urn:mavedb:00000001-a-1,complementation
-UBE2I,urn:mavedb:00000001-a-3,complementation
-UBE2I,urn:mavedb:00000001-a-2,complementation
-UBE2I,urn:mavedb:00000001-a-4,complementation
-BRCA1 RING domain,urn:mavedb:00000003-b-1,Y2H
-BRCA1 RING domain,urn:mavedb:00000003-a-2,phage display
-BRCA1 RING domain,urn:mavedb:00000003-b-2,Y2H
-BRCA1 RING domain,urn:mavedb:00000003-a-1,phage display
-E4B,urn:mavedb:00000004-a-3,phage display
-E4B,urn:mavedb:00000004-a-2,phage display
-E4B,urn:mavedb:00000004-a-1,phage display
-SUMO1,urn:mavedb:00000001-b-2,complementation
-SUMO1,urn:mavedb:00000001-b-1,complementation
-TPK1,urn:mavedb:00000001-d-1,complementation
-TPK1,urn:mavedb:00000001-d-2,complementation
-Gal4,urn:mavedb:00000012-a-1,Y2H
-Gal4,urn:mavedb:00000012-a-6,Y2H
-Gal4,urn:mavedb:00000012-a-2,Y2H
-Gal4,urn:mavedb:00000012-a-3,Y2H
-Gal4,urn:mavedb:00000012-a-5,Y2H
-Gal4,urn:mavedb:00000012-a-4,Y2H
-MPL,urn:mavedb:00000043-a-1,unknown
-Ubiquitin,urn:mavedb:00000037-a-1,growth assay
-Ubiquitin,urn:mavedb:00000038-b-1,yeast display
-Ubiquitin,urn:mavedb:00000038-a-1,yeast display
-Ubiquitin,urn:mavedb:00000038-b-2,yeast display
-EGFP,urn:mavedb:00000042-a-1,unknown
-LDLRAP1,urn:mavedb:00000036-a-1,Y2H
-LDLRAP1,urn:mavedb:00000036-a-2,Y2H
-Src SH4 domain,urn:mavedb:00000041-b-1,growth assay
-HSP90,urn:mavedb:00000040-a-1,growth assay
-HSP90,urn:mavedb:00000039-a-2,growth assay
-HSP90,urn:mavedb:00000039-a-3,growth assay
-HSP90,urn:mavedb:00000039-a-5,growth assay
-HSP90,urn:mavedb:00000039-a-4,growth assay
-HSP90,urn:mavedb:00000039-a-1,growth assay
-HSP90,urn:mavedb:00000040-a-2,growth assay
-HSP90,urn:mavedb:00000040-a-3,growth assay
-HSP90,urn:mavedb:00000011-a-1,growth assay
-HSP90,urn:mavedb:00000040-a-4,growth assay
-HSP90,urn:mavedb:00000039-a-6,growth assay
-HSP90,urn:mavedb:00000039-a-7,growth assay
-TPMT,urn:mavedb:00000013-b-1,growth assay
-CALM1,urn:mavedb:00000001-c-1,complementation
-CALM1,urn:mavedb:00000001-c-2,complementation
-Src catalytic domain,urn:mavedb:00000041-a-1,growth assay
+﻿urn,manual_annotation_assay
+urn:mavedb:00000035-a-2,complementation
+urn:mavedb:00000035-a-3,complementation
+urn:mavedb:00000035-a-1,complementation
+urn:mavedb:00000002-a-2,phage display
+urn:mavedb:00000002-a-1,phage display
+urn:mavedb:00000013-a-1,unknown
+urn:mavedb:00000005-a-5,complementation
+urn:mavedb:00000005-a-4,complementation
+urn:mavedb:00000005-a-2,complementation
+urn:mavedb:00000005-a-3,complementation
+urn:mavedb:00000005-a-6,complementation
+urn:mavedb:00000005-a-1,complementation
+urn:mavedb:00000010-a-1,RNA-binding
+urn:mavedb:00000043-a-2,unknown
+urn:mavedb:00000001-a-1,complementation
+urn:mavedb:00000001-a-3,complementation
+urn:mavedb:00000001-a-2,complementation
+urn:mavedb:00000001-a-4,complementation
+urn:mavedb:00000003-b-1,Y2H
+urn:mavedb:00000003-a-2,phage display
+urn:mavedb:00000003-b-2,Y2H
+urn:mavedb:00000003-a-1,phage display
+urn:mavedb:00000004-a-3,phage display
+urn:mavedb:00000004-a-2,phage display
+urn:mavedb:00000004-a-1,phage display
+urn:mavedb:00000001-b-2,complementation
+urn:mavedb:00000001-b-1,complementation
+urn:mavedb:00000001-d-1,complementation
+urn:mavedb:00000001-d-2,complementation
+urn:mavedb:00000012-a-1,Y2H
+urn:mavedb:00000012-a-6,Y2H
+urn:mavedb:00000012-a-2,Y2H
+urn:mavedb:00000012-a-3,Y2H
+urn:mavedb:00000012-a-5,Y2H
+urn:mavedb:00000012-a-4,Y2H
+urn:mavedb:00000043-a-1,unknown
+urn:mavedb:00000037-a-1,growth assay
+urn:mavedb:00000038-b-1,yeast display
+urn:mavedb:00000038-a-1,yeast display
+urn:mavedb:00000038-b-2,yeast display
+urn:mavedb:00000042-a-1,unknown
+urn:mavedb:00000036-a-1,Y2H
+urn:mavedb:00000036-a-2,Y2H
+urn:mavedb:00000041-b-1,growth assay
+urn:mavedb:00000040-a-1,growth assay
+urn:mavedb:00000039-a-2,growth assay
+urn:mavedb:00000039-a-3,growth assay
+urn:mavedb:00000039-a-5,growth assay
+urn:mavedb:00000039-a-4,growth assay
+urn:mavedb:00000039-a-1,growth assay
+urn:mavedb:00000040-a-2,growth assay
+urn:mavedb:00000040-a-3,growth assay
+urn:mavedb:00000011-a-1,growth assay
+urn:mavedb:00000040-a-4,growth assay
+urn:mavedb:00000039-a-6,growth assay
+urn:mavedb:00000039-a-7,growth assay
+urn:mavedb:00000013-b-1,growth assay
+urn:mavedb:00000001-c-1,complementation
+urn:mavedb:00000001-c-2,complementation
+urn:mavedb:00000041-a-1,growth assay

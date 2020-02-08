@@ -1,0 +1,12 @@
+Deep mutational scan of HSP90
+keywords:
+regression
+log ratios
+Description
+Deep mutational scan of all single mutants in a nine-amino acid region of Hsp90 (Hsp82) in Saccharomyces cerevisiae.
+Abstract
+This was the first dataset described that used the EMPIRIC approach ("extremely methodical and parallel investigation of randomized individual codons"). It generated experimental fitness measurements for a nine amino acid region of yeast Hsp90. The experimental design is based on calculating growth rates for yeast containing variant Hsp90 sequences as compared to yeast containing the wild type sequence.
+Method
+Sequencing reads were filtered based on a minimum Phred quality score of 20 across all 36 bases. For each time point, the log2 ratio of each variant's count to the wild type count was calculated. The score of each variant was calculated as the slope of these log ratios to time in wild type generations. The integers in the counts column headings indicate the number of wild type generations for each time point. Scores for stop codons and mutants with scores within three SD of the stop codon mean were considered null-like and scored using only the first three time points.
+Pubmed
+http://www.ncbi.nlm.nih.gov/pubmed/21464309
