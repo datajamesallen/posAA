@@ -27,7 +27,7 @@ if res:
         if not os.path.exists('scoresets/' + target_name):
             os.makedirs(target_name)
 
-        textfile = os.path.join('scoresets', target_name, ' experiment_info.txt')
+        textfile = os.path.join('scoresets', target_name, urn, urn + '_experiment.txt')
 
         pubmed_urls = []
         pubmed_ids = []

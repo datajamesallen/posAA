@@ -92,9 +92,6 @@ def get_posAA(orf):
             orig_abrev = aa_abrev[orig_aa]
             name = orig_abrev + str(i+1) + mut_abrev
             hgvs_pro = 'p.' + orig_aa + str(i+1) + mutaa
-            #primer = primermaker("","",codonorf, i, 6, mutcodon)
-            #codonrow = [orig_aa, str(i+1), mutaa, codon, mutcodon, primer,
-            #        reversecomp(primer)]
             codonrow = [hgvs_pro, orig_aa, str(i+1), mutaa, codon, mutcodon]
             codonlist.append(codonrow)
     return codonlist
@@ -105,16 +102,17 @@ def get_posAA(orf):
 
 # iterate through targets and files
 for target in os.listdir('scoresets'):
-    for filename in os.listdir('scoresets/' + target):
-        #print(filename)
-        if filename.endswith('_seq.fasta'):
-            #print(filename)
-            # this is the the sequence we want
-            with open('scoresets/' + target + '/' + filename, 'r') as f:
-                seq = f.readlines()[0]
-            posAA_filename = filename[:-10] + '_posAA.csv'
-            posAA = get_posAA(seq)
-            with open('scoresets/' + target + '/' + posAA_filename, 'w') as f:
-                for row in posAA:
-                    f.write(','.join(row)+'\n')
-    print(target)
+    target_dir = os.path.join('scoresets', target)
+    for urn in os.listdir(target_dir):
+        urn_dir = os.path.join(target_dir, urn):
+        for filename in os.listdir(urn_dir)
+            if filename.endswith('_seq.fasta'):
+                #print(filename)
+                # this is the the sequence we want
+                with open('scoresets/' + target + '/' + filename, 'r') as f:
+                    seq = f.readlines()[0]
+                posAA_filename = filename[:-10] + '_posAA.csv'
+                posAA = get_posAA(seq)
+                with open('scoresets/' + target + '/' + posAA_filename, 'w') as f:
+                    for row in posAA:
+                        f.write(','.join(row)+'\n')
