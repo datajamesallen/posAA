@@ -26,6 +26,7 @@ if res:
         target_name = scoreset['target']['name']
         if not os.path.exists('scoresets/' + target_name):
             os.makedirs(target_name)
+
         textfile = os.path.join('scoresets', target_name, ' experiment_info.txt')
 
         pubmed_urls = []

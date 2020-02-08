@@ -53,8 +53,8 @@ for target in os.listdir('scoresets'):
             n_impos = len(imposdf)
             #print('number of impossible variants: ' + str(len(imposdf)))
 
-            posdf.to_csv(os.path.join('scoresets',target,urn + '_possible'))
-            imposdf.to_csv(os.path.join('scoresets',target,urn + '_impossible'))
+            posdf.to_csv(os.path.join('scoresets',target,urn + '_possible.csv'))
+            imposdf.to_csv(os.path.join('scoresets',target,urn + '_impossible.csv'))
 
             mean_score_all = df['score'].mean()
             mean_score_pos = posdf['score'].mean()
