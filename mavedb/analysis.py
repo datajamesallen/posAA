@@ -48,10 +48,13 @@ for target in os.listdir('scoresets'):
 
                 # open data file
                 df = pd.read_csv(os.path.join(urn_dir,filename), skiprows = 4)
+                df['stop'] = df.apply(lambda x: len(re.findall('Ter', x['hgvs_pro']))==1, axis = 1)
                 df['single_aa'] = df.apply(lambda x: len(x['hgvs_pro'].split(';')) == 1, axis=1)
                 df['syn'] = df.apply(lambda x: len(re.findall('=', x['hgvs_pro']))==1, axis = 1)
+                n_stop = len(df[df['stop'] == True])
                 n_multi = len(df[df['single_aa'] == False])
                 n_syn = len(df[df['syn'] == True])
+                df = df[df['stop'] == False]
                 df = df[df['single_aa'] == True]
                 df = df[df['syn'] == False]
 

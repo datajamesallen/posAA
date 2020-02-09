@@ -1,2 +1,2 @@
-,accession,hgvs_nt,hgvs_pro,score,SE,epsilon,SE_PlusE2NewRep3,score_PlusE2NewRep3,SE_PlusE2NewRep4,score_PlusE2NewRep4,SE_PlusE2NewRep5,score_PlusE2NewRep5,SE_PlusE2Rep3,score_PlusE2Rep3,SE_PlusE2Rep4,score_PlusE2Rep4,SE_PlusE2Rep5,score_PlusE2Rep5,single_aa,syn,possible
-14091,urn:mavedb:00000003-a-1#14092,_wt,_wt,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,False,False
+,accession,hgvs_nt,hgvs_pro,score,SE,epsilon,SE_PlusE2NewRep3,score_PlusE2NewRep3,SE_PlusE2NewRep4,score_PlusE2NewRep4,SE_PlusE2NewRep5,score_PlusE2NewRep5,SE_PlusE2Rep3,score_PlusE2Rep3,SE_PlusE2Rep4,score_PlusE2Rep4,SE_PlusE2Rep5,score_PlusE2Rep5,stop,single_aa,syn,possible
+14091,urn:mavedb:00000003-a-1#14092,_wt,_wt,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,False,False

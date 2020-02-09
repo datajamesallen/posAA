@@ -1,2 +1,2 @@
-,accession,hgvs_nt,hgvs_pro,score,SE,epsilon,SE_Rep_2,score_Rep_2,SE_Rep_3,score_Rep_3,single_aa,syn,possible
-0,urn:mavedb:00000004-a-2#1,_wt,_wt,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,False,False
+,accession,hgvs_nt,hgvs_pro,score,SE,epsilon,SE_Rep_2,score_Rep_2,SE_Rep_3,score_Rep_3,stop,single_aa,syn,possible
+0,urn:mavedb:00000004-a-2#1,_wt,_wt,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,False,False
