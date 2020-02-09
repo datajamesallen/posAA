@@ -10,6 +10,12 @@ import sys
 import requests
 import time
 import os
+import pandas as pd 
+
+anno_df = pd.read_csv('annotations.csv')
+removed_df = anno_df[anno_df['remove'] == 'REMOVE']
+anno_df = anno_df[anno_df['remove'] != 'REMOVE']
+removed_list = removed_df['urn'].tolist()
 
 print('Downloading mavedb scoreset information')
 res = requests.get('https://www.mavedb.org/api/scoresets/?format=json')
@@ -24,6 +30,10 @@ if res:
         if target_type != 'Protein coding':
             continue
         urn = scoreset['urn']
+        # we want to make sure the urn is not in our removed list
+        if urn in removed_list:
+            continue
+
         # create a directory for each target
         target_name = scoreset['target']['name']
         if not os.path.exists('scoresets/' + target_name):
@@ -67,11 +77,8 @@ print('merging data with output.csv')
 # merge the scoreset info with the output.csv
 # also added annotations
 
-import pandas as pd 
-
 info_df = pd.DataFrame(target_list[1:], columns = target_list[0])
 output_df = pd.read_csv('output.csv')
-anno_df = pd.read_csv('annotations.csv')
 
 final_output = pd.merge(output_df, info_df, how='outer',on='urn')
 final_output = pd.merge(final_output, anno_df, how = 'outer', on ='urn')

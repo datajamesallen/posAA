@@ -21,9 +21,21 @@ r_stats = importr('stats')
 from scipy.stats import ks_2samp
 #from scipy.stats import ttest_ind
 
-output_list = [['target','urn','n_multi','n_syn','mean_score_all','std_score_all','n_all','mean_score_pos',
+# first we need to load our file that includes the annotations for each urn.
+# this is because we have annotated some urns that we want to exclude from our analysis
+
+anno_df = pd.read_csv('annotations.csv')
+removed_df = anno_df[anno_df['remove'] == 'REMOVE']
+removed_list = removed_df['urn'].tolist()
+
+output_list = [['target','urn','n_multi','n_syn','n_stop','mean_score_all','std_score_all','n_all','mean_score_pos',
                 'std_score_pos','n_pos','mean_score_impos','std_score_impos',
                 'n_impos','delta_pos_impos','ks_stat','ks_p','r_ks_stat','r_ks_p']]
+
+from matplotlib.backends.backend_pdf import PdfPages
+
+# create a pdf for our histograms to all go in
+pp = PdfPages('figures/histograms.pdf')
 
 # iterate through targets and files
 for target in os.listdir('scoresets'):
@@ -31,6 +43,9 @@ for target in os.listdir('scoresets'):
     if not os.path.isdir(target_dir):
         continue
     for urn in os.listdir(target_dir):
+        # we want to check to make sure this urn is not in our removal list
+        if urn in removed_list:
+            continue
         urn_dir = os.path.join(target_dir, urn)
         if not os.path.isdir(urn_dir):
             continue
@@ -113,10 +128,14 @@ for target in os.listdir('scoresets'):
                 plt.xlabel('Score')
                 plt.ylabel('Probability')
                 plt.suptitle('Normalized Histogram of ' + target + ' (' + urn + ')')
-                plt.title('K-S p value = ' + str(r_ks_p))
+                if r_ks_p < 0.001:
+                    plt.title('K-S p value < 0.001')
+                else:
+                    plt.title('K-S p value = ' + str(r_ks_p))
                 plt.legend()
                 plt.savefig(os.path.join(urn_dir, urn+'_histograms.png'))
                 plt.savefig('figures/histograms/' + target + '_' + urn + '.png')
+                pp.savefig(fig)
                 plt.close(fig)
                 """
                 # old histogram code
@@ -131,11 +150,13 @@ for target in os.listdir('scoresets'):
                 plt.close(fig)
                 """
 
-                output_row = [target, urn, n_multi, n_syn, mean_score_all, std_score_all, n_all, mean_score_pos,
+                output_row = [target, urn, n_multi, n_syn, n_stop, mean_score_all, std_score_all, n_all, mean_score_pos,
                           std_score_pos, n_pos, mean_score_impos, std_score_impos,
                           n_impos, delta_pos_impos, ks_stat, ks_p, r_ks_stat, r_ks_p]
 
                 output_list.append(output_row)
+
+pp.close()
 
 with open('output.csv', 'w') as f:
     for row in output_list:
