@@ -1,61 +1,61 @@
-﻿urn,manual_annotation_assay
-urn:mavedb:00000035-a-2,complementation
-urn:mavedb:00000035-a-3,complementation
-urn:mavedb:00000035-a-1,complementation
-urn:mavedb:00000002-a-2,phage display
-urn:mavedb:00000002-a-1,phage display
-urn:mavedb:00000013-a-1,unknown
-urn:mavedb:00000005-a-5,complementation
-urn:mavedb:00000005-a-4,complementation
-urn:mavedb:00000005-a-2,complementation
-urn:mavedb:00000005-a-3,complementation
-urn:mavedb:00000005-a-6,complementation
-urn:mavedb:00000005-a-1,complementation
-urn:mavedb:00000010-a-1,RNA-binding
-urn:mavedb:00000043-a-2,unknown
-urn:mavedb:00000001-a-1,complementation
-urn:mavedb:00000001-a-3,complementation
-urn:mavedb:00000001-a-2,complementation
-urn:mavedb:00000001-a-4,complementation
-urn:mavedb:00000003-b-1,Y2H
-urn:mavedb:00000003-a-2,phage display
-urn:mavedb:00000003-b-2,Y2H
-urn:mavedb:00000003-a-1,phage display
-urn:mavedb:00000004-a-3,phage display
-urn:mavedb:00000004-a-2,phage display
-urn:mavedb:00000004-a-1,phage display
-urn:mavedb:00000001-b-2,complementation
-urn:mavedb:00000001-b-1,complementation
-urn:mavedb:00000001-d-1,complementation
-urn:mavedb:00000001-d-2,complementation
-urn:mavedb:00000012-a-1,Y2H
-urn:mavedb:00000012-a-6,Y2H
-urn:mavedb:00000012-a-2,Y2H
-urn:mavedb:00000012-a-3,Y2H
-urn:mavedb:00000012-a-5,Y2H
-urn:mavedb:00000012-a-4,Y2H
-urn:mavedb:00000043-a-1,unknown
-urn:mavedb:00000037-a-1,growth assay
-urn:mavedb:00000038-b-1,yeast display
-urn:mavedb:00000038-a-1,yeast display
-urn:mavedb:00000038-b-2,yeast display
-urn:mavedb:00000042-a-1,unknown
-urn:mavedb:00000036-a-1,Y2H
-urn:mavedb:00000036-a-2,Y2H
-urn:mavedb:00000041-b-1,growth assay
-urn:mavedb:00000040-a-1,growth assay
-urn:mavedb:00000039-a-2,growth assay
-urn:mavedb:00000039-a-3,growth assay
-urn:mavedb:00000039-a-5,growth assay
-urn:mavedb:00000039-a-4,growth assay
-urn:mavedb:00000039-a-1,growth assay
-urn:mavedb:00000040-a-2,growth assay
-urn:mavedb:00000040-a-3,growth assay
-urn:mavedb:00000011-a-1,growth assay
-urn:mavedb:00000040-a-4,growth assay
-urn:mavedb:00000039-a-6,growth assay
-urn:mavedb:00000039-a-7,growth assay
-urn:mavedb:00000013-b-1,growth assay
-urn:mavedb:00000001-c-1,complementation
-urn:mavedb:00000001-c-2,complementation
-urn:mavedb:00000041-a-1,growth assay
+﻿urn,assay,comment,inputed,condition,control,gain,loss,remove,reason
+urn:mavedb:00000035-a-2,complementation,"unsure of scoring, possibly unpublished",Yes,glucose media no statin,1,NA,<,,
+urn:mavedb:00000035-a-3,complementation,"unsure of scoring, possibly unpublished",Yes,atorvastatin media,1,NA,<,,
+urn:mavedb:00000035-a-1,complementation,"unsure of scoring, possibly unpublished",Yes,rosuvastatin media,1,NA,<,,
+urn:mavedb:00000002-a-2,phage display,Enrich2 scores,,nucleotide,0,>,<,REMOVE,missing impossible variants
+urn:mavedb:00000002-a-1,phage display,Enrich2 scores,,amino acid,0,>,<,,
+urn:mavedb:00000013-a-1,VAMP-seq,"protein stability/ abundance assay for LOF, 1 mean WT, 0 mean nonsense",,,1,NA,<,,
+urn:mavedb:00000005-a-5,complementation,"unsure of exact scoring system, but 0 is mean nonsense score and 1 is mean synonymous score",No,low B6,1,NA,<,,
+urn:mavedb:00000005-a-4,complementation,"unsure of exact scoring system, but 0 is mean nonsense score and 1 is mean synonymous score",Yes,low B6,1,NA,<,,
+urn:mavedb:00000005-a-2,complementation,"unsure of exact scoring system, but 0 is mean nonsense score and 1 is mean synonymous score",Yes,high B6,1,NA,<,REMOVE,old version
+urn:mavedb:00000005-a-3,complementation,"unsure of exact scoring system, but 0 is mean nonsense score and 1 is mean synonymous score",Yes,high B6,1,NA,<,,
+urn:mavedb:00000005-a-6,complementation,"unsure of exact scoring system, but 0 is mean nonsense score and 1 is mean synonymous score",No,high B6,1,NA,<,,
+urn:mavedb:00000005-a-1,complementation,"unsure of exact scoring system, but 0 is mean nonsense score and 1 is mean synonymous score",Yes,low B6,1,NA,<,REMOVE,old version
+urn:mavedb:00000010-a-1,RNA-binding,,,,1,>,<,,
+urn:mavedb:00000043-a-2,mamalian cells,,,S505N MPL,0,>,<,,
+urn:mavedb:00000001-a-1,complementation,1 mean WT 0 mean null,Yes,DMS-barseq and DMS-tileseq,1,>,<,,
+urn:mavedb:00000001-a-3,complementation,1 mean WT 0 mean null,No,DMS-tileseq,1,>,<,,
+urn:mavedb:00000001-a-2,complementation,1 mean WT 0 mean null,No,DMS-barseq,1,>,<,,
+urn:mavedb:00000001-a-4,complementation,1 mean WT 0 mean null,No,DMS-barseq and DMS-tileseq,1,>,<,,
+urn:mavedb:00000003-b-1,Y2H,control is mean wt 0,,,0,>,<,REMOVE,missing impossible variants
+urn:mavedb:00000003-a-2,phage display,control is mean wt 0,,,0,>,<,,
+urn:mavedb:00000003-b-2,Y2H,control is mean wt 0,,,0,>,<,,
+urn:mavedb:00000003-a-1,phage display,control is mean wt 0,,,0,>,<,REMOVE,missing impossible variants
+urn:mavedb:00000004-a-3,phage display,Starita et al. 2013 scores,,,0,>,<,,
+urn:mavedb:00000004-a-2,phage display,Enrich2 scores,,,0,>,<,REMOVE,missing impossible variants
+urn:mavedb:00000004-a-1,phage display,Enrich2 scores,,,0,>,<,,
+urn:mavedb:00000001-b-2,complementation,control is mean wt 1,,,1,>,<,,
+urn:mavedb:00000001-b-1,complementation,control is mean wt 1,,,1,>,<,,
+urn:mavedb:00000001-d-1,complementation,0 mean nonsense and 1 mean synonymous,No,,1,NA,<,,
+urn:mavedb:00000001-d-2,complementation,0 mean nonsense and 1 mean synonymous,Yes,,1,NA,<,,
+urn:mavedb:00000012-a-1,Y2H,log2(mut/wt),,24h non-selective growth,0,>,<,,
+urn:mavedb:00000012-a-6,Y2H,log2(mut/wt),,24h selective growth,0,>,<,,
+urn:mavedb:00000012-a-2,Y2H,log2(mut/wt),,40h selective growth A,0,>,<,,
+urn:mavedb:00000012-a-3,Y2H,log2(mut/wt),,40h selective growth B,0,>,<,,
+urn:mavedb:00000012-a-5,Y2H,log2(mut/wt),,40h selective growth C,0,>,<,,
+urn:mavedb:00000012-a-4,Y2H,log2(mut/wt),,64h selective growth C,0,>,<,,
+urn:mavedb:00000043-a-1,mamalian cells,,,MLP free factor growth,0,>,<,,
+urn:mavedb:00000037-a-1,growth assay,yeast Ubiquitin binidng assay,,,0,>,<,,
+urn:mavedb:00000038-b-1,yeast display binding,measuring binding to E1,,limiting E1,1,>,<,,
+urn:mavedb:00000038-a-1,yeast display binding,measuring binding to E1,,"excess E1, region 1",1,>,<,,
+urn:mavedb:00000038-b-2,yeast display binding,measuring binding to E1,,"excess E1, region 2",1,>,<,,
+urn:mavedb:00000042-a-1,mamalian cells,"only 1 codon (start codon) maybe not very useful, not sure of scoring system",,,,,,REMOVE,not enough data to draw conclusions
+urn:mavedb:00000036-a-1,Y2H,"unsure of scoring, possibly unpublished",,interactor OBFC1,1,NA,<,,
+urn:mavedb:00000036-a-2,Y2H,"unsure of scoring, possibly unpublished",,interactor AP2B1,1,NA,<,,
+urn:mavedb:00000041-b-1,growth assay,score is opposite because depletion of population means high kinase activity,,,0,<,>,,
+urn:mavedb:00000040-a-1,growth assay,null like -0.5 log2(mut/wt),,"no NaCl, 30degC",0,NA,<,,
+urn:mavedb:00000039-a-2,growth assay,"selection coefficient, null like = -1",,"ADH promoter, no 3'UTR added",0,NA,<,,
+urn:mavedb:00000039-a-3,growth assay,"selection coefficient, null like = -1",,CYC promoter with CYC 3'UTR.,0,NA,<,,
+urn:mavedb:00000039-a-5,growth assay,"selection coefficient, null like = -1",,GPD promoter with CYC 3'UTR.,0,NA,<,,
+urn:mavedb:00000039-a-4,growth assay,"selection coefficient, null like = -1",,"CYC promoter, no 3'UTR added.",0,NA,<,,
+urn:mavedb:00000039-a-1,growth assay,"selection coefficient, null like = -1",,under the control of the ADH promoter with CYC 3'UTR,0,NA,<,,
+urn:mavedb:00000040-a-2,growth assay,null like -0.5. log2(mut/wt),,"NaCl, 30degC",0,>,<,,
+urn:mavedb:00000040-a-3,growth assay,null like -0.5. log2(mut/wt),,"no NaCl, 36degC",0,>,<,,
+urn:mavedb:00000011-a-1,growth assay,slope log(mut/wt),,"NaCl, 30degC",0,>,<,,
+urn:mavedb:00000040-a-4,growth assay,null like -0.5 log2(mut/wt),,,0,>,<,,
+urn:mavedb:00000039-a-6,growth assay,"selection coefficient, null like = -1",,TEF promoter with CYC 3'UTR.,0,NA,<,,
+urn:mavedb:00000039-a-7,growth assay,"selection coefficient, null like = -1",,"TEF promoter, no 3'UTR added.",0,NA,<,,
+urn:mavedb:00000013-b-1,VAMP-seq,"protein stability/ abundance assay for LOF, 1 mean WT, 0 mean nonsense",,,1,NA,<,,
+urn:mavedb:00000001-c-1,complementation,control is mean wt 1,Yes,,1,>,<,,
+urn:mavedb:00000001-c-2,complementation,control is mean wt 1,No,,1,>,<,,
+urn:mavedb:00000041-a-1,growth assay,score is opposite because depletion of population means high kinase activity,,,0,<,>,,
