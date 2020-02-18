@@ -24,7 +24,7 @@ urn:mavedb:00000005-a-3,CBS,complementation,"unsure of exact scoring system, but
 urn:mavedb:00000005-a-4,CBS,complementation,"unsure of exact scoring system, but 0 is mean nonsense score and 1 is mean synonymous score",Yes,low B6,1,NA,<,,
 urn:mavedb:00000005-a-5,CBS,complementation,"unsure of exact scoring system, but 0 is mean nonsense score and 1 is mean synonymous score",No,low B6,1,NA,<,,
 urn:mavedb:00000005-a-6,CBS,complementation,"unsure of exact scoring system, but 0 is mean nonsense score and 1 is mean synonymous score",No,high B6,1,NA,<,,
-urn:mavedb:00000010-a-1,PAB1,RNA-binding,,,,1,>,<,,
+urn:mavedb:00000010-a-1,,RNA-binding,,,,1,>,<,,
 urn:mavedb:00000011-a-1,,growth assay,slope log(mut/wt),,"NaCl, 30degC",0,>,<,,
 urn:mavedb:00000012-a-1,,Y2H,log2(mut/wt),,24h non-selective growth,0,>,<,,
 urn:mavedb:00000012-a-2,,Y2H,log2(mut/wt),,40h selective growth A,0,>,<,,

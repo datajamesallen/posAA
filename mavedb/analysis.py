@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#/usr/bin/python3
 
 """
 runs batch analysis on mavedb data 
@@ -133,7 +133,21 @@ for target in os.listdir('scoresets'):
                     """ urns that will perform analysis based on gnomAD data """
                     # i am not sure why but missing numbers are qualified as floats right now
                     # this should get rid of missing values in this category
-                    print(gene)
+                    gmd_file = '../gnomAD/gnomADv2_' + gene + '.csv'
+                    gmd_df = pd.read_csv(gmd_file)
+                    syn_df = gmd_df[gmd_df['Annotation'] == 'synonymous_variant']
+                    syn_df['aa_num'] = syn_df.apply(lambda x: re.findall('[0-9]+', x['Consequence'])[0] if len(re.findall('[0-9]+', x['Consequence'])) >= 1 else None, axis = 1)
+                    syn_df['is_syn'] = syn_df.apply(lambda x: 1 if x['Allele Count'] > 0 else 0, axis=1)
+                    grouped_syn_df = syn_df.groupby('aa_num').agg({'is_syn':['sum']})
+                    grouped_syn_df.columns = ['_'.join(col).strip() for col in grouped_syn_df.columns.values]
+                    grouped_syn_df = grouped_syn_df.reset_index()
+                    print(grouped_syn_df)
+                    grouped_syn_df = grouped_syn_df[['aa_num','is_syn_sum']]
+                    merged_gmd_df = grouped_syn_df.merge(mergedf, on = 'aa_num', how = 'outer')
+                    merged_gmd_df = merged_gmd_df.fillna(0)
+                    plt.scatter(merged_gmd_df['is_syn_sum'], merged_gmd_df['delta_score'])
+                    plt.show()
+                    print(merged_gmd_df)
 
                 # write them out to file for later investigation/debugging
                 posdf.to_csv(os.path.join(urn_dir,urn + '_possible.csv'))
