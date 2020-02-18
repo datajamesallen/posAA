@@ -12,5 +12,7 @@ Method
 Barcodes for each bin were counted and associated with variant sequences using Enrich2. Scores were calculated based on the frequency of each variant in each bin using a weighted average such that increased abundance in high-signal bins gives a higher score. Abundance scores were calculated based on a min-max normalization using wild type (score of 1) and the average nonsense variant score (score of 0). The scores reported are the average of the eight replicate scores. Confidence intervals and variance estimates are based on the replicate scores.
 
 Metadata contains the mapping between abundance classes and the integer values found in the database.
+Organism
+Homo sapiens
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/29785012

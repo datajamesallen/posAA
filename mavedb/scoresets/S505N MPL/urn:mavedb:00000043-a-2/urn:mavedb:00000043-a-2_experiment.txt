@@ -18,4 +18,6 @@ cDNA was prepared from 1 μg of total RNA using the TpoR-specific reverse transc
 The paired-end reads from Illumina sequencing runs were separated into samples based on Illumina index sequences using Cutadapt v1.157. De-duplication based on the UMI was performed using UMI Tools v1.15 after sample separation. Reads were trimmed to the region of interest and filtered for length using Cutadapt prior to analysis with Enrich2 v1.2.0. 
 
 To determine mutations that confer increased activity on the S505N background six replicates of library-containing BaF3 cells grown in IL-3 were compared to six replicates of library-containing BaF3 cells grown without growth factors.  Log ratio enrichment scores were calculated using “wild-type” (all synonymous DNA sequences encoding the WT amino acid sequence) count normalisation.
+Organism
+Homo sapiens
 Pubmed

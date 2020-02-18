@@ -20,7 +20,7 @@ removed_list = removed_df['urn'].tolist()
 print('Downloading mavedb scoreset information')
 res = requests.get('https://www.mavedb.org/api/scoresets/?format=json')
 
-target_list = [['urn','keywords','title','short_desc','pubmed_ids']]
+target_list = [['urn','keywords','title','short_desc','organism','pubmed_ids']]
 if res:
     scoreset_info = res.json()
     print('iterating through scoreset results')
@@ -45,6 +45,7 @@ if res:
         pubmed_ids = []
         title = scoreset['title']
         short_desc = scoreset['short_description']
+        organism = scoreset['target']['reference_maps'][0]['genome']['organism_name']
         keywords = []
         with open(textfile, 'w') as f:
             f.write(title + '\n')
@@ -60,6 +61,8 @@ if res:
             f.write(scoreset['abstract_text'] + '\n')
             f.write('Method\n')
             f.write(scoreset['method_text'] + '\n')
+            f.write('Organism\n')
+            f.write(organism + '\n')
             f.write('Pubmed\n')
             for item in scoreset['pubmed_ids']:
                 if item:
@@ -69,7 +72,7 @@ if res:
                     pubmed_ids.append(item['identifier'])
         pubmed_string = '/'.join(pubmed_urls)
         keywords_string = '/'.join(keywords)
-        target_row = [urn, keywords, title, short_desc, pubmed_ids]
+        target_row = [urn, keywords, title, short_desc, organism, pubmed_ids]
         target_list.append(target_row)
 
 print('merging data with output.csv')

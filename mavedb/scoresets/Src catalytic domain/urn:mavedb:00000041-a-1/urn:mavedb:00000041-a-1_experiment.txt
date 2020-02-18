@@ -15,5 +15,7 @@ Method
 Variant scores were calculated using Enrich2 weighted least squares regression and wild-type normalization. The `activity_score` is `-1 * score`, because negative scores indicate depletion in the population, which is associated with higher kinase activity.
 
 Variants were classified as "gain of function" "neutral" or "loss of function" based on whether they were within +/- 2 standard deviations of the mean score of synonymous variants (variants with wild type amino acid sequence). These categories are denoted by 1, 0, or -1 in the table respectively.
+Organism
+Homo sapiens
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/30956043

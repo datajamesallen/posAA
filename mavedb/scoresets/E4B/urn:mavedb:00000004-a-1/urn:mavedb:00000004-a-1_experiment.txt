@@ -11,6 +11,8 @@ Abstract
 This study identified multiple gain-of-function mutations in the ubiquitination factor E4B U-box domain by measuring auto-ubiquitination in a phage display system. E4B is an E3 ligase, responsible for transferring a ubiquitin from an E2 ligase to the target (in this case the phage displaying E4B). Many of these mutations are not specific to one E2 enzyme and so may be generalizable for mutiple E2s and E3s.
 Method
 Scores were calculated using the Enrich software package, corrected for nonspecific carryover as described in (1). Uncorrected log2 enrichment ratios are also provided. This dataset used only the variant counts in the input and round 3 selected time points as the basis for the log ratio scoring.
+Organism
+Mus musculus
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/22006916
 http://www.ncbi.nlm.nih.gov/pubmed/23509263

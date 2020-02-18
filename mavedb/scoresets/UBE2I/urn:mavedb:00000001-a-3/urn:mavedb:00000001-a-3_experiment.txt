@@ -15,5 +15,7 @@ Method
 DMS-TileSeq reads were processed using [tileseq_package](https://bitbucket.org/rothlabto/tileseq_package) and [dmsPipeline](https://bitbucket.org/rothlabto/dmspipeline) software. Briefly, TileSeq read counts were used to establish relative allele frequencies in each condition. Non-mutagenized control counts were subtracted from counts (as estimates of sequencing error). log ratios of selection over non-selection counts were calculated. The resulting TileSeq fitness values were normalized to a 0-1 scale, where 0 corresponds to the median nonsense variant score and 1 corresponds to the median synonymous score.
 
 See [**Weile *et al.* 2017**](http://msb.embopress.org/content/13/12/957) for more details.
+Organism
+Homo sapiens
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/29269382

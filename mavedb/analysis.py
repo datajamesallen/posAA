@@ -36,6 +36,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 
 # create a pdf for our histograms to all go in
 pp = PdfPages('figures/histograms.pdf')
+pp_delta = PdfPages('figures/delta_scores.pdf')
 
 # iterate through targets and files
 for target in os.listdir('scoresets'):
@@ -63,6 +64,8 @@ for target in os.listdir('scoresets'):
 
                 # open data file
                 df = pd.read_csv(os.path.join(urn_dir,filename), skiprows = 4)
+
+                # figure out what type of variant each of these are
                 df['stop'] = df.apply(lambda x: len(re.findall('Ter', x['hgvs_pro']))==1, axis = 1)
                 df['single_aa'] = df.apply(lambda x: len(x['hgvs_pro'].split(';')) == 1, axis=1)
                 df['syn'] = df.apply(lambda x: len(re.findall('=', x['hgvs_pro']))==1, axis = 1)
@@ -72,6 +75,9 @@ for target in os.listdir('scoresets'):
                 df = df[df['stop'] == False]
                 df = df[df['single_aa'] == True]
                 df = df[df['syn'] == False]
+
+                # get the amino acid number
+                df['aa_num'] = df.apply(lambda x: re.findall('[0-9]+', x['hgvs_pro'])[0] if len(re.findall('[0-9]+', x['hgvs_pro'])) >= 1 else None, axis = 1)
 
                 # calculate possible variants
                 df['possible'] = df['hgvs_pro'].isin(pos_codons_list)
@@ -84,9 +90,33 @@ for target in os.listdir('scoresets'):
                 n_impos = len(imposdf)
                 #print('number of impossible variants: ' + str(len(imposdf)))
 
+                # figure out the difference in mean possible - impossible per site (aaNum)
+                grouped_posdf = posdf.groupby('aa_num').agg({'score':['mean']})
+                grouped_posdf.columns = ['_'.join(col).strip() for col in grouped_posdf.columns.values]
+                grouped_posdf = grouped_posdf.reset_index()
+
+                grouped_imposdf = imposdf.groupby('aa_num').agg({'score':['mean']})
+                grouped_imposdf.columns = ['_'.join(col).strip() for col in grouped_imposdf.columns.values]
+                grouped_imposdf = grouped_imposdf.reset_index()
+
+                mergedf = grouped_posdf.merge(grouped_imposdf, on = 'aa_num', how = 'outer', suffixes = ('_pos','_impos'))
+                mergedf['delta_score'] = mergedf['score_mean_pos'] - mergedf['score_mean_impos']
+
+                print(mergedf)
+                fig1,ax1 = plt.subplots(1,1)
+                ax1.hist(mergedf['delta_score'])
+                plt.suptitle('Difference in score per codon Possible - Impossible for ' + target)
+                plt.savefig(os.path.join(urn_dir, urn+'_delta.png'))
+                plt.savefig('figures/delta_scores/' + target + '_' + urn + '.png')
+                pp_delta.savefig(fig1)
+                plt.close(fig1)
+
+
+                # write them out to file for later investigation/debugging
                 posdf.to_csv(os.path.join(urn_dir,urn + '_possible.csv'))
                 imposdf.to_csv(os.path.join(urn_dir,urn + '_impossible.csv'))
 
+                # perform some basic statistics
                 mean_score_all = df['score'].mean()
                 mean_score_pos = posdf['score'].mean()
                 mean_score_impos = imposdf['score'].mean()
@@ -113,7 +143,7 @@ for target in os.listdir('scoresets'):
                 #ks_stat_exact, ks_p_exact = ks_2samp(poslist,imposlist,mode='exact')
                 #print(ttest_ind(a,b,nan_policy='omit'))
 
-                # new histogram design
+                # create a histogram to show to difference in scores
                 fig,ax = plt.subplots(1,1)
                 bins = 40
                 a = posdf['score']
@@ -157,6 +187,7 @@ for target in os.listdir('scoresets'):
                 output_list.append(output_row)
 
 pp.close()
+pp_delta.close()
 
 with open('output.csv', 'w') as f:
     for row in output_list:

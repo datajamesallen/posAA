@@ -14,4 +14,6 @@ cDNA was prepared from 1 μg of total RNA using the TpoR-specific reverse transc
 The paired-end reads from Illumina sequencing runs were separated into samples based on Illumina index sequences using Cutadapt v1.15. De-duplication based on the UMI was performed using UMI Tools v1.15 after sample separation. Reads were trimmed to the region of interest and filtered for length using Cutadapt7 prior to analysis with Enrich2 v1.2.0. 
 
 To determine mutations that confer constitutive activity log ratio enrichment scores were calculated for each of the six replicates by comparing the variant counts in the unselected plasmid library with those remaining in Ba/F3 cells after 2 days of culture in growth factor free media using “wild-type” (all synonymous DNA sequences encoding the WT amino acid sequence) count normalisation.
+Organism
+Homo sapiens
 Pubmed

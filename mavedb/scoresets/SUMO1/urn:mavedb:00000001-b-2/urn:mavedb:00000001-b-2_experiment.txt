@@ -20,5 +20,7 @@ See [**Weile *et al.* 2017**](http://msb.embopress.org/content/13/12/957) for mo
 * exp.sd = standard deviation of the experimental score
 * df = degrees of freedom (number of replicates contributing to the experimental score)
 * pred.score = machine-learning predicted score
+Organism
+Homo sapiens
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/29269382

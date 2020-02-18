@@ -12,5 +12,7 @@ Method
 Growth rates were calculated for each variant and converted into selection coefficients. The selection coefficient for each variant under control of this promoter/UTR combination is reported as the score. For variants with multiple synonymous codons, the reported coefficient is the average of all synonymous variant's selection coefficients.
 
 Variants annotated as "null-like" have a score of -1.
+Organism
+Saccharomyces cerevisiae
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/23825969

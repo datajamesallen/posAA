@@ -14,6 +14,8 @@ This experiment used the same library of ubiquitin variants as previously descri
 This entry describes the second of two regions assayed with excess E1, covering ubiquitin positions 68-76.
 Method
 Scores were calculated using the EMPIRIC log ratios approach, using the ratio of E1-reactive cells to HA-displaying cells. Scores were normalized such that the average wild type synonymous variant was 1 and the average nonsense mutation was 0. The raw $log_2$ ratio is included as an extra column. The "Std" column lists the standard deviation calculated from multiple measurements of synonymous codons. This value is `nan` when only one codon was measured.
+Organism
+Saccharomyces cerevisiae
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/24862281
 http://www.ncbi.nlm.nih.gov/pubmed/23376099

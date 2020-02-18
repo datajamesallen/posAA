@@ -17,6 +17,8 @@ Scores were calculated using the Enrich2 weighted least squares regression scori
 The scores and standard errors calculated for each of replicate appear as additional columns.
 
 Count columns are named using the format `<replicate>_c_<timepoint>`. The 0 time point is the input (unselected). Time points are given in rounds.
+Organism
+Mus musculus
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/28784151
 http://www.ncbi.nlm.nih.gov/pubmed/23509263

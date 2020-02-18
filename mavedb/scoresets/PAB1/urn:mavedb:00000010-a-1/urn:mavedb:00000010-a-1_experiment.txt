@@ -8,6 +8,8 @@ Abstract
 This study measured the sequence-function relationships for variants in a common, eukaryotic RNA binding domain, the RRM2 domain of yeast Pab1. The results identified clusters of residues with similar mutational patterns as well as highly-conserved residues that are critical for stability and/or function.
 Method
 Variant reads were filtered such that all bases had at least Q20 for all positions. Log ratio scores were calculated using the Enrich software package and normalized to the wild type score.
+Organism
+Saccharomyces cerevisiae
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/22006916
 http://www.ncbi.nlm.nih.gov/pubmed/24064791

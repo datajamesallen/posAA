@@ -16,4 +16,6 @@ Scoring procedure:
 DMS-TileSeq reads were processed using the tileseq_package and tilsesqMave softwares. Briefly, TileSeq read counts were used to establish relative allele frequencies in each condition. Non-mutagenized control counts were subtracted from counts (as estimates of sequencing error). Log-ratios of selection over non-selection counts were calculated. The resulting TileSeq fitness values were then normalized to 0-1 scale where 0 corresponds to the median nonsense score and 1 corresponds to the median synonymous score. Gradient boosted tree-based machine learning was used to impute missing values and refine low-confidence measurements, based on intrinsic, structural, and biochemical features.
 
 See Sun et al 2018 for more details.
+Organism
+Homo sapiens
 Pubmed

@@ -16,4 +16,6 @@ Method
 DMS-BarSeq and DMS-TileSeq reads were processed using the [dmsPipeline](https://bitbucket.org/rothlabto/dmspipeline) software. Briefly, Barseq read counts were used to establish relative frequencies of each strain at each timepoint and converted to estimates of absolute frequencies using OD measurement data. Absolute counts were used to establish growth curves from which fitness parameters were estimated and then normalized to 0-1 scale where 0 corresponds to null controls and 1 corresponds to WT controls. Meanwhile, TileSeq read counts were used to establish relative allele frequencies in each condition. Non-mutagenized control counts were subtracted from counts (as estimates of sequencing error). log ratios of selection over non-selection counts were calculated. The resulting TileSeq fitness values were then rescaled to the distribution of the BarSeq fitness scores. Fitness scores were joined using confidence-weighted averages. 
 
 See [**Weile *et al.* 2017**](http://msb.embopress.org/content/13/12/957) for more details.
+Organism
+Homo sapiens
 Pubmed

@@ -15,5 +15,7 @@ Scores were calculated using the Enrich2 weighted least squares regression scori
 The scores and standard errors calculated for each of the two technical replicates (101208 and 110307) appear as additional columns.
 
 Count columns are named using the format `<replicate>_c_<timepoint>`. The 0 time point is the input (unselected) and each replicate underwent three rounds of selection, numbered 1..3.
+Organism
+Homo sapiens
 Pubmed
 http://www.ncbi.nlm.nih.gov/pubmed/28784151
