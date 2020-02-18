@@ -33,11 +33,13 @@ info_df = add_info(download=False)
 all_info_df = pd.merge(info_df, anno_df, how = 'outer', on ='urn')
 removed_df = all_info_df[all_info_df['remove'] == 'REMOVE']
 removed_list = removed_df['urn'].tolist()
+non_remove = all_info_df['remove'] != 'REMOVE'
+all_info_df = all_info_df[non_remove]
 all_info_df = all_info_df.drop(['remove','reason'],axis=1)
 
 human_df = all_info_df[all_info_df['organism'] == 'Homo sapiens']
 human_list = human_df['urn'].tolist()
-human_target = []
+print(set(human_df['gene'].tolist()))
 
 output_list = [['target','urn','n_multi','n_syn','n_stop','mean_score_all','std_score_all','n_all','mean_score_pos',
                 'std_score_pos','n_pos','mean_score_impos','std_score_impos',
@@ -58,9 +60,6 @@ for target in os.listdir('scoresets'):
         # we want to check to make sure this urn is not in our removal list
         if urn in removed_list:
             continue
-        if urn in human_list:
-            # add to a list of targets to be used for gnomAD data collection
-            human_target.append(target)
         urn_dir = os.path.join(target_dir, urn)
         if not os.path.isdir(urn_dir):
             continue
@@ -71,6 +70,10 @@ for target in os.listdir('scoresets'):
                 print('Analyzing data for: ' + urn)
                 # find the corresponding posAA file
                 posAA_filename = urn + '_posAA.csv'
+
+                # this will give all of the info for the given urn
+                urn_df = all_info_df[all_info_df['urn'] == urn]
+                gene = urn_df.iloc[0]['gene']
 
                 # Begin analysis
                 pos_codons = pd.read_csv(os.path.join(urn_dir,posAA_filename), header = None)
@@ -116,15 +119,21 @@ for target in os.listdir('scoresets'):
                 mergedf = grouped_posdf.merge(grouped_imposdf, on = 'aa_num', how = 'outer', suffixes = ('_pos','_impos'))
                 mergedf['delta_score'] = mergedf['score_mean_pos'] - mergedf['score_mean_impos']
 
-                print(mergedf)
+                #print(mergedf)
                 fig1,ax1 = plt.subplots(1,1)
-                ax1.hist(mergedf['delta_score'])
+                non_null_df = mergedf[mergedf['delta_score'].notnull()]
+                ax1.hist(non_null_df['delta_score'])
                 plt.suptitle('Difference in score per codon Possible - Impossible for ' + target)
                 plt.savefig(os.path.join(urn_dir, urn+'_delta.png'))
                 plt.savefig('figures/delta_scores/' + target + '_' + urn + '.png')
                 pp_delta.savefig(fig1)
                 plt.close(fig1)
 
+                if isinstance(gene, str):
+                    """ urns that will perform analysis based on gnomAD data """
+                    # i am not sure why but missing numbers are qualified as floats right now
+                    # this should get rid of missing values in this category
+                    print(gene)
 
                 # write them out to file for later investigation/debugging
                 posdf.to_csv(os.path.join(urn_dir,urn + '_possible.csv'))
@@ -199,10 +208,6 @@ for target in os.listdir('scoresets'):
                           n_impos, delta_pos_impos, ks_stat, ks_p, r_ks_stat, r_ks_p]
 
                 output_list.append(output_row)
-
-human_target = set(human_target)
-human_target_df = pd.DataFrame(human_target, columns = ['target'])
-human_target_df.to_csv('human_target.csv')
 
 pp.close()
 pp_delta.close()
