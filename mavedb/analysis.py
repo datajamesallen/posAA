@@ -21,12 +21,23 @@ r_stats = importr('stats')
 from scipy.stats import ks_2samp
 #from scipy.stats import ttest_ind
 
+from add_info import add_info
+
 # first we need to load our file that includes the annotations for each urn.
 # this is because we have annotated some urns that we want to exclude from our analysis
 
+
 anno_df = pd.read_csv('annotations.csv')
-removed_df = anno_df[anno_df['remove'] == 'REMOVE']
+info_df = add_info(download=False)
+
+all_info_df = pd.merge(info_df, anno_df, how = 'outer', on ='urn')
+removed_df = all_info_df[all_info_df['remove'] == 'REMOVE']
 removed_list = removed_df['urn'].tolist()
+all_info_df = all_info_df.drop(['remove','reason'],axis=1)
+
+human_df = all_info_df[all_info_df['organism'] == 'Homo sapiens']
+human_list = human_df['urn'].tolist()
+human_target = []
 
 output_list = [['target','urn','n_multi','n_syn','n_stop','mean_score_all','std_score_all','n_all','mean_score_pos',
                 'std_score_pos','n_pos','mean_score_impos','std_score_impos',
@@ -47,6 +58,9 @@ for target in os.listdir('scoresets'):
         # we want to check to make sure this urn is not in our removal list
         if urn in removed_list:
             continue
+        if urn in human_list:
+            # add to a list of targets to be used for gnomAD data collection
+            human_target.append(target)
         urn_dir = os.path.join(target_dir, urn)
         if not os.path.isdir(urn_dir):
             continue
@@ -186,9 +200,14 @@ for target in os.listdir('scoresets'):
 
                 output_list.append(output_row)
 
+human_target = set(human_target)
+human_target_df = pd.DataFrame(human_target, columns = ['target'])
+human_target_df.to_csv('human_target.csv')
+
 pp.close()
 pp_delta.close()
 
-with open('output.csv', 'w') as f:
-    for row in output_list:
-        f.write(','.join(str(e) for e in row)+'\n')
+output_df = pd.DataFrame(output_list[1:], columns = output_list[0])
+final_output = pd.merge(output_df, all_info_df, how='outer',on='urn')
+final_output.to_csv('output.csv',index=False)
+
