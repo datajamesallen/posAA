@@ -251,6 +251,8 @@ for target in os.listdir('scoresets'):
 
 pp.close()
 pp_delta.close()
+pp_syn.close()
+pp_gmd.close()
 
 output_df = pd.DataFrame(output_list[1:], columns = output_list[0])
 final_output = pd.merge(output_df, all_info_df, how='outer',on='urn')
