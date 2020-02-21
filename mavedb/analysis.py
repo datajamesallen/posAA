@@ -50,6 +50,8 @@ from matplotlib.backends.backend_pdf import PdfPages
 # create a pdf for our histograms to all go in
 pp = PdfPages('figures/histograms.pdf')
 pp_delta = PdfPages('figures/delta_scores.pdf')
+pp_syn = PdfPages('figures/delta_syn.pdf')
+pp_gmd = PdfPages('figures/isgnomAD.pdf')
 
 # iterate through targets and files
 for target in os.listdir('scoresets'):
@@ -141,13 +143,37 @@ for target in os.listdir('scoresets'):
                     grouped_syn_df = syn_df.groupby('aa_num').agg({'is_syn':['sum']})
                     grouped_syn_df.columns = ['_'.join(col).strip() for col in grouped_syn_df.columns.values]
                     grouped_syn_df = grouped_syn_df.reset_index()
-                    print(grouped_syn_df)
+                    #print(grouped_syn_df)
                     grouped_syn_df = grouped_syn_df[['aa_num','is_syn_sum']]
-                    merged_gmd_df = grouped_syn_df.merge(mergedf, on = 'aa_num', how = 'outer')
-                    merged_gmd_df = merged_gmd_df.fillna(0)
-                    plt.scatter(merged_gmd_df['is_syn_sum'], merged_gmd_df['delta_score'])
-                    plt.show()
-                    print(merged_gmd_df)
+                    merged_gmd_syn_df = grouped_syn_df.merge(mergedf, on = 'aa_num', how = 'outer')
+                    merged_gmd_syn_df = merged_gmd_syn_df.fillna(0)
+                    fig, ax = plt.subplots(1,1)
+                    merged_gmd_syn_df.boxplot(column = 'delta_score', by = 'is_syn_sum', ax=ax)
+                    plt.suptitle(gene)
+                    plt.savefig('figures/delta_score_syn/' + gene + '_syn.png')
+                    pp_syn.savefig(fig)
+                    plt.close(fig)
+                    #plt.scatter(merged_gmd_df['is_syn_sum'], merged_gmd_df['delta_score'])
+                    #plt.show()
+                    #print(merged_gmd_df)
+
+                    # figure out the functional distribution of gnomAD data
+                    mis_df = gmd_df[gmd_df['Annotation'] == 'missense_variant']
+                    mis_df['aa_num'] = mis_df.apply(lambda x: re.findall('[0-9]+', x['Consequence'])[0] if len(re.findall('[0-9]+', x['Consequence'])) >= 1 else None, axis = 1)
+                    mis_df['is_mis'] = mis_df.apply(lambda x: 1 if x['Allele Count'] > 0 else 0, axis=1)
+                    mis_df = mis_df[['Protein Consequence','Allele Count','is_mis']]
+                    merged_gmd_mis_df = mis_df.merge(df, right_on = 'hgvs_pro', left_on = 'Protein Consequence', how = 'outer')
+                    merged_gmd_mis_df['Allele Count'] = merged_gmd_mis_df['Allele Count'].fillna(0)
+                    merged_gmd_mis_df['in_gnomAD'] = merged_gmd_mis_df.apply(lambda x: True if x['Allele Count'] > 0 else False, axis=1)
+                    fig, ax = plt.subplots(1,1)
+                    merged_gmd_mis_df.boxplot(column = 'score', by = 'in_gnomAD', ax=ax)
+                    #plt.boxplot(merged_gmd_mis_df['Allele Count'], merged_gmd_mis_df['score'])
+                    plt.suptitle(gene)
+                    plt.savefig('figures/isgnomAD/' + gene + '_isgnomAD.png')
+                    pp_gmd.savefig(fig)
+                    plt.close(fig)
+                    #print(merged_gmd_mis_df)
+
 
                 # write them out to file for later investigation/debugging
                 posdf.to_csv(os.path.join(urn_dir,urn + '_possible.csv'))
