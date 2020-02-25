@@ -131,8 +131,8 @@ for target in os.listdir('scoresets'):
                 pp_delta.savefig(fig1)
                 plt.close(fig1)
 
-                if isinstance(gene, str):
-                    """ urns that will perform analysis based on gnomAD data """
+                if isinstance(gene, str): # this checks that there is a human gene associated with this data
+                    """ only gets urns that will perform analysis based on gnomAD data """
                     # i am not sure why but missing numbers are qualified as floats right now
                     # this should get rid of missing values in this category
                     gmd_file = '../gnomAD/gnomADv2_' + gene + '.csv'
@@ -147,33 +147,54 @@ for target in os.listdir('scoresets'):
                     grouped_syn_df = grouped_syn_df[['aa_num','is_syn_sum']]
                     merged_gmd_syn_df = grouped_syn_df.merge(mergedf, on = 'aa_num', how = 'outer')
                     merged_gmd_syn_df = merged_gmd_syn_df.fillna(0)
+
+                    # delta_score boxplots
                     fig, ax = plt.subplots(1,1)
                     merged_gmd_syn_df.boxplot(column = 'delta_score', by = 'is_syn_sum', ax=ax)
                     plt.suptitle(gene)
                     plt.savefig('figures/delta_score_syn/' + gene + '_syn.png')
                     pp_syn.savefig(fig)
                     plt.close(fig)
-                    #plt.scatter(merged_gmd_df['is_syn_sum'], merged_gmd_df['delta_score'])
-                    #plt.show()
-                    #print(merged_gmd_df)
 
                     # figure out the functional distribution of gnomAD data
                     mis_df = gmd_df[gmd_df['Annotation'] == 'missense_variant']
                     mis_df['aa_num'] = mis_df.apply(lambda x: re.findall('[0-9]+', x['Consequence'])[0] if len(re.findall('[0-9]+', x['Consequence'])) >= 1 else None, axis = 1)
                     mis_df['is_mis'] = mis_df.apply(lambda x: 1 if x['Allele Count'] > 0 else 0, axis=1)
                     mis_df = mis_df[['Protein Consequence','Allele Count','is_mis']]
-                    merged_gmd_mis_df = mis_df.merge(df, right_on = 'hgvs_pro', left_on = 'Protein Consequence', how = 'outer')
+                    merged_gmd_mis_df = mis_df.merge(df, right_on = 'hgvs_pro', left_on = 'Protein Consequence', how = 'right')
                     merged_gmd_mis_df['Allele Count'] = merged_gmd_mis_df['Allele Count'].fillna(0)
                     merged_gmd_mis_df['in_gnomAD'] = merged_gmd_mis_df.apply(lambda x: True if x['Allele Count'] > 0 else False, axis=1)
+
+                    # isgnomAD boxplots
                     fig, ax = plt.subplots(1,1)
                     merged_gmd_mis_df.boxplot(column = 'score', by = 'in_gnomAD', ax=ax)
-                    #plt.boxplot(merged_gmd_mis_df['Allele Count'], merged_gmd_mis_df['score'])
                     plt.suptitle(gene)
                     plt.savefig('figures/isgnomAD/' + gene + '_isgnomAD.png')
                     pp_gmd.savefig(fig)
                     plt.close(fig)
-                    #print(merged_gmd_mis_df)
 
+                    gmd_len = len(merged_gmd_mis_df[merged_gmd_mis_df['in_gnomAD'] == True])
+                    print(gmd_len)
+
+                    # isgnomAD histograms
+                    if gmd_len > 0:
+                        fig,ax = plt.subplots(1,1)
+                        bins = 40
+                        a = merged_gmd_mis_df[merged_gmd_mis_df['in_gnomAD'] == True]['score']
+                        print(a)
+                        b = merged_gmd_mis_df[merged_gmd_mis_df['in_gnomAD'] == False]['score']
+                        print(b)
+                        a_w = np.empty(a.shape)
+                        a_w.fill(1/a.shape[0])
+                        b_w = np.empty(b.shape)
+                        b_w.fill(1/b.shape[0])
+                        ax.hist(a, bins, color = 'blue', weights = a_w, label = 'in gnomAD', alpha = 0.5)
+                        ax.hist(b, bins, color = 'red', weights = b_w, label = 'not in gnomAD', alpha = 0.5)
+                        plt.xlabel('Score')
+                        plt.ylabel('Probability')
+                        plt.suptitle(gene)
+                        plt.savefig('figures/isgnomAD/' + gene + '_isgnomAD_hist.png')
+                        plt.close(fig)
 
                 # write them out to file for later investigation/debugging
                 posdf.to_csv(os.path.join(urn_dir,urn + '_possible.csv'))
